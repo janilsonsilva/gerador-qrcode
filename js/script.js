@@ -24,10 +24,22 @@ function genQRCode(){
 //     }
 // );
 
-function baixarImagem() {
+// function baixarImagem() {
+//     const img = document.getElementById("qrcode");
+//     const link = document.createElement("a");
+//     link.href = img.src;
+//     link.download = "QRCode.png";
+//     link.click();
+// }
+
+async function baixarImagemFetch() {
     const img = document.getElementById("qrcode");
-    const link = document.createElement("a");
-    link.href = img.src;
-    link.download = "QRCode.png";
-    link.click();
-  }
+    const response = await fetch(img.src);
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "QRCode.jpg";
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
