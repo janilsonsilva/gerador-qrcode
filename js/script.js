@@ -28,6 +28,6 @@ function baixarImagem() {
     const img = document.getElementById("qrcode");
     const link = document.createElement("a");
     link.href = img.src;
-    link.download = "nome-da-imagem.jpg";
+    link.download = "QRCode.png";
     link.click();
   }
